@@ -11,11 +11,12 @@
     <div class="container">
       <button class="btn btn-outline-secondary btn-sm float-end" @click="clearBasket">Clear</button>
       <ul class="list-group list-group-flush">
-        <BasketCard @increase="increase(card.name)" @decrease="decrease(card.name)" @remove="remove(card.name)"
+        <BasketCard class="border rounded" @increase="increase(card.name)" @decrease="decrease(card.name)"
+                    @remove="remove(card.name)"
                     v-for="card in products" :key="card.name" :card="card"/>
       </ul>
+      <a class="border float-end" :key="products">&euro;{{ total }}</a>
       <button class="btn btn-outline-secondary btn-sm float-end">Purchase</button>
-      <a class="border float-end" :key="products">&euro;{{total}}</a>
     </div>
   </div>
 </template>
@@ -35,7 +36,7 @@ export default {
     }
   },
   methods: {
-    async sumTotal(){
+    async sumTotal() {
       this.total = this.products.map(item => item.basketprice).reduce((prev, next) => prev + next);
     },
     async getData() {

@@ -1,6 +1,6 @@
 <template>
   <div class="row" v-if="card.inbasket">
-    <div class="card-header">Product</div>
+    <div class="card-header container-fluid text-center">Product</div>
     <div class="row main align-items-center">
       <div class="col-2"><img class="img-fluid" src="https://picsum.photos/200" alt="Product Photo"></div>
       <div class="col">
@@ -8,8 +8,10 @@
       </div>
       <div class="col">
         <button class="btn btn-outline-secondary btn-sm float-end" :disabled="!(card.basketquantity>1)" @click="dec">-</button>
-        <a href="#" class="border">{{ card.basketquantity }}</a>
-        <button class="btn btn-outline-secondary btn-sm float-end" @click="inc">+</button>
+        <div class="container-fluid text-center border">
+          <a href="#">{{ card.basketquantity }}</a>
+        </div>
+        <button class="btn btn-outline-secondary btn-sm float-end" style="margin-top: 0" @click="inc">+</button>
       </div>
       <div class="col">&euro;<a data-testid="basketPrices">{{ card.basketprice }}</a> <span class="close"><button
           class="btn btn-outline-secondary btn-sm float-end" @click="del">Delete</button></span></div>

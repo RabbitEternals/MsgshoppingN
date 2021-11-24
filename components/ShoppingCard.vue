@@ -1,7 +1,7 @@
 <template>
   <th>
-  <div class='container-fluid'>
-    <div class="card mx-auto col-md-3 col-10 mt-5">
+  <div class='container'>
+    <div class="card mx-auto col-md-30 col-10 mt-5">
       <div class="card-header text-center">Product</div>
       <div class="card-body text-center mx-auto">
         <img class='mx-auto img-thumbnail' src="https://picsum.photos/200" width="200" height="200"
