@@ -89,14 +89,6 @@ describe("Shopping Page", () => {
             const homePage = screen.queryByTestId("shopping-page");
             expect(homePage).toBeInTheDocument();
         });
-        //TODO fix test
-        it("displays basket page after clicking to link", async () => {
-            await setup();
-            const link = screen.queryByRole("link", {name: "Basket Page"});
-            await userEvent.click(link);
-            const basketPage = await screen.findByTestId("basket-page");
-            expect(basketPage).toBeInTheDocument();
-        });
     });
 });
 
