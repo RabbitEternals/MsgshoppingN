@@ -1,19 +1,19 @@
 <template>
   <th>
-  <div class='container'>
-    <div class="card mx-auto col-md-30 col-10 mt-5">
-      <div class="card-header text-center">Product</div>
-      <div class="card-body text-center mx-auto">
-        <img class='mx-auto img-thumbnail' src="https://picsum.photos/200" width="200" height="200"
-             alt="Product Photo"/>
-        <div class='cvp'>
-          <h5 class="card-title font-weight-bold">{{ card.name }}</h5>
-          <p class="card-text">${{ card.price }}</p>
-          <button v-show="!isAdded" @click="addToBasket(card.name)" class="btn cart px-auto">ADD</button>
+    <div class='container'>
+      <div class="card mx-auto col-md-30 col-10 mt-5">
+        <div :id="'header'+card.id" class="card-header text-center">Product {{card.id}}</div>
+        <div class="card-body text-center mx-auto">
+          <img :id="'photo'+card.id" class='mx-auto img-thumbnail' src="https://picsum.photos/200" width="200" height="200"
+               alt="Product Photo"/>
+          <div class='cvp'>
+            <h5 :id="'name'+card.id" class="card-title font-weight-bold">{{ card.name }}</h5>
+            <p :id="'price'+card.id" class="card-text">${{ card.price }}</p>
+            <button :id="'button'+card.id" v-show="!isAdded" @click="addToBasket(card.name)" class="btn cart px-auto">ADD</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </th>
 </template>
 
@@ -42,7 +42,7 @@ export default {
     }
   },
   async mounted() {
-    this.card.inbasket === true ? this.isAdded = true : this.isAdded = false;
+    this.card.inBasket === true ? this.isAdded = true : this.isAdded = false;
   }
 }
 </script>

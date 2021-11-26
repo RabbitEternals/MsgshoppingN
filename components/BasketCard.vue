@@ -1,20 +1,20 @@
 <template>
-  <div class="row" v-if="card.inbasket">
-    <div class="card-header container-fluid text-center">Product</div>
+  <div class="row" v-if="card.inBasket">
+    <div :id="'product'+card.id" class="card-header container-fluid text-center">Product {{card.id}}</div>
     <div class="row main align-items-center">
-      <div class="col-2"><img class="img-fluid" src="https://picsum.photos/200" alt="Product Photo"></div>
+      <div class="col-2"><img :id="'photo'+card.id" class="img-fluid" src="https://picsum.photos/200" alt="Product Photo"></div>
       <div class="col">
-        <div class="row">{{ card.name }}</div>
+        <div class="row" :id="'name'+card.id">{{ card.name }}</div>
       </div>
       <div class="col">
-        <button class="btn btn-outline-secondary btn-sm float-end" :disabled="!(card.basketquantity>1)" @click="dec">-</button>
+        <button class="btn btn-outline-secondary btn-sm float-end" :id="'-'+card.id" :disabled="!(card.basketQuantity>1)" @click="dec">-</button>
         <div class="container-fluid text-center border">
-          <a href="#">{{ card.basketquantity }}</a>
+          <a href="#" :id="'quantity'+card.id">{{ card.basketQuantity }}</a>
         </div>
-        <button class="btn btn-outline-secondary btn-sm float-end" style="margin-top: 0" @click="inc">+</button>
+        <button class="btn btn-outline-secondary btn-sm float-end" :id="'+'+card.id" style="margin-top: 0" @click="inc">+</button>
       </div>
-      <div class="col">&euro;<a data-testid="basketPrices">{{ card.basketprice }}</a> <span class="close"><button
-          class="btn btn-outline-secondary btn-sm float-end" @click="del">Delete</button></span></div>
+      <div class="col">&euro;<a data-testid="basketPrices" :id="'price'+card.id">{{ card.basketPrice }}</a> <span class="close"><button
+          class="btn btn-outline-secondary btn-sm float-end" :id="'delete'+card.id" @click="del">Delete</button></span></div>
     </div>
   </div>
 </template>
