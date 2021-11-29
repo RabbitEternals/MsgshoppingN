@@ -6,7 +6,7 @@ import {ALL, INCREASE} from "../../locales/util"
 import axios from "axios";
 
 pactWith(
-  {consumer: 'shoppingm', provider: 'shoppingCardM', cors: true},
+  {consumer: 'shopping', provider: 'shoppingCard', cors: true},
   (provider: Pact) => {
     describe("Get cards", () => {
       const type = ALL;
