@@ -3,8 +3,8 @@ import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import {rest} from "msw";
 import {setupServer} from "msw/node";
-import App from "../pages/BasketPage";
-import {DECREASE, INCREASE, REMOVE} from "../locales/util";
+import App from "../../pages/BasketPage";
+import {DECREASE, INCREASE, REMOVE} from "../../locales/util";
 
 
 let counter = 0;

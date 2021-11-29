@@ -3,7 +3,7 @@ import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import {rest} from "msw";
 import {setupServer} from "msw/node";
-import App from "../pages/ShoppingPage";
+import App from "../../pages/ShoppingPage";
 
 let counter = 0;
 let listType;

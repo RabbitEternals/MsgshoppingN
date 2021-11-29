@@ -8,16 +8,18 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "test": "jest",
-    "test:consumer": "jest consumer.spec.ts"
+    "test:unit": "jest --testPathIgnorePatterns=test/contract",
+    "test:consumer": "jest --testPathPattern=test/contract",
+    "chrome": "open -n -a /Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --args --user-data-dir=\"/tmp/chrome_dev_test\" --disable-web-security"
   },
   "dependencies": {
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.15.1",
+    "dotenv": "^10.0.0",
     "nuxt": "^2.15.7"
   },
   "devDependencies": {
-    "@nuxtjs/axios": "^5.13.6",
     "@pact-foundation/pact": "^9.16.5",
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/user-event": "^13.5.0",
@@ -30,7 +32,6 @@
     "jest-pact": "^0.9.1",
     "msw": "^0.35.0",
     "ts-jest": "^27.0.7",
-    "vue-jest": "^3.0.4",
-    "vue-router": "^3.5.3"
+    "vue-jest": "^3.0.4"
   }
 }
