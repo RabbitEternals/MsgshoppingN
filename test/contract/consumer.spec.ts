@@ -32,7 +32,7 @@ pactWith(
             }),
             query: `type=${like(type)}`,
             headers: {
-              Accept: 'application/json; charset=utf-8'
+              Accept: 'application/json;charset=utf-8'
             }
           },
           willRespondWith: {
@@ -62,7 +62,7 @@ pactWith(
             }),
             query: `name=${like(name)}`,
             headers: {
-              Accept: 'application/json; charset=utf-8'
+              Accept: 'application/json;charset=utf-8'
             }
           },
           willRespondWith: {
@@ -93,7 +93,7 @@ pactWith(
             }),
             query: `type=${like(type)}&name=${like(name)}`,
             headers: {
-              Accept: 'application/json; charset=utf-8'
+              Accept: 'application/json;charset=utf-8'
             }
           },
           willRespondWith: {
@@ -121,7 +121,7 @@ pactWith(
               matcher: '/clear'
             }),
             headers: {
-              Accept: 'application/json; charset=utf-8'
+              Accept: 'application/json;charset=utf-8'
             }
           },
           willRespondWith: {
