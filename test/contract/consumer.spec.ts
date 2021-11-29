@@ -3,6 +3,7 @@ import {pactWith} from 'jest-pact';
 import {listProducts, addBasket, changeProduct, clearBasket} from '../../api/apiCalls';
 import {like, term} from "@pact-foundation/pact/src/dsl/matchers";
 import {ALL, INCREASE} from "../../locales/util"
+import axios from "axios";
 
 pactWith(
   {consumer: 'shoppingm', provider: 'shoppingCardM', cors: true},
@@ -30,7 +31,12 @@ pactWith(
               generate: `/list`,
               matcher: '/list'
             }),
-            query: `type=${like(type)}`,
+            query: {
+              type: term({
+                generate: `${type}`,
+                matcher: '^[A-Z]*$'
+              })
+            },
             headers: {
               Accept: 'application/json;charset=utf-8'
             }
@@ -44,7 +50,7 @@ pactWith(
         return provider.addInteraction(interaction);
       });
       it('Given type When request listProducts Then should return products', async () => {
-        process.env.apiBaseUrl = provider.mockService.baseUrl;
+        axios.defaults.baseURL = provider.mockService.baseUrl;
         await listProducts(type);
       });
     });
@@ -60,9 +66,14 @@ pactWith(
               generate: `/putIn`,
               matcher: '/putIn'
             }),
-            query: `name=${like(name)}`,
+            query: {
+              name: term({
+                generate: `${name}`,
+                matcher: '^[A-Za-z]*$',
+              })
+            },
             headers: {
-              Accept: 'application/json;charset=utf-8'
+              'Content-Type': 'application/json',
             }
           },
           willRespondWith: {
@@ -74,7 +85,7 @@ pactWith(
         return provider.addInteraction(interaction);
       });
       it('Given name When request addBasket Then should return status OK', async () => {
-        process.env.apiBaseUrl = provider.mockService.baseUrl;
+        axios.defaults.baseURL = provider.mockService.baseUrl;
         await addBasket(name);
       });
     });
@@ -91,9 +102,19 @@ pactWith(
               generate: `/change`,
               matcher: '/change'
             }),
-            query: `type=${like(type)}&name=${like(name)}`,
+            query: {
+              type: term({
+                generate: `${type}`,
+                matcher: '^[A-Z]*$'
+              }),
+              name: term({
+                generate: `${name}`,
+                matcher: '^[A-Za-z]*$',
+              })
+
+            },
             headers: {
-              Accept: 'application/json;charset=utf-8'
+              'Content-Type': 'application/json',
             }
           },
           willRespondWith: {
@@ -105,8 +126,8 @@ pactWith(
         return provider.addInteraction(interaction);
       });
       it('Given name and type When request changeProduct Then should return status OK', async () => {
-        process.env.apiBaseUrl = provider.mockService.baseUrl;
-        await changeProduct(name);
+        axios.defaults.baseURL = provider.mockService.baseUrl;
+        await changeProduct(type,name);
       });
     });
     describe("Clear basket cards", () => {
@@ -121,7 +142,7 @@ pactWith(
               matcher: '/clear'
             }),
             headers: {
-              Accept: 'application/json;charset=utf-8'
+              'Content-Type': 'application/json',
             }
           },
           willRespondWith: {
@@ -133,7 +154,7 @@ pactWith(
         return provider.addInteraction(interaction);
       });
       it('Given none When request clearBasket Then should return status OK', async () => {
-        process.env.apiBaseUrl = provider.mockService.baseUrl;
+        axios.defaults.baseURL = provider.mockService.baseUrl;
         await clearBasket();
       });
     });
